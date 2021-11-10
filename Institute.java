@@ -1,10 +1,15 @@
 package com.example.nsplayer2;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,7 +19,7 @@ public class Institute {
 	@Column(name = "inscode")
 	private int InstituteCode;
 	
-	@Column(name = "statenm")
+	@Column(name = "state")
 	private String StateName;
 	
 	@Column(name = "insname")
@@ -55,7 +60,20 @@ public class Institute {
 	
 	@Column(name = "minsaccdate")
     private LocalDate MinistryAcceptedDate;
+	
+	
+	
+	@ManyToOne
+	@JoinColumn(name= "state")
+	private StateNodalOfficer state;
+	
     
+	public StateNodalOfficer getState() {
+		return state;
+	}
+	public void setState(StateNodalOfficer state) {
+		this.state = state;
+	}
 	public int getInstituteCode() {
 		return InstituteCode;
 	}
