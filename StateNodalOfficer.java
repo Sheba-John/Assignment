@@ -1,11 +1,28 @@
 package com.example.nsplayer2;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.OneToMany;
+
 public class StateNodalOfficer {
+	
 private String StateName;
 private String Password;
 private String OfficerName;
 private int MobileNumber;
 private String EmailID;
+
+@OneToMany
+Set<Institute> insSet = new HashSet<Institute>();
+
+
+public Set<Institute> getInsSet() {
+	return insSet;
+}
+public void setInsSet(Set<Institute> insSet) {
+	this.insSet = insSet;
+}
 public String getStateName() {
 	return StateName;
 }
